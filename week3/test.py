@@ -12,9 +12,15 @@
 #     print(r_dict["iss_position"])
 #     time.sleep(5)
 
-import requests, json
+# import requests, json
 
+# url="https://v6.exchangerate-api.com/v6/7a91e6d981f56e6bb66304ca/latest/USD"
+# r=requests.get(url)
+# dt_dict=r.json()
+# print(dt_dict['conversion_rates']['KRW'])
+
+import requests, json, pandas as pd
 url="https://v6.exchangerate-api.com/v6/7a91e6d981f56e6bb66304ca/latest/USD"
 r=requests.get(url)
 dt_dict=r.json()
-print(dt_dict['conversion_rates']['KRW'])
+print(pd.DataFrame.from_dict(dt_dict['conversion_rates'], orient='index'))
